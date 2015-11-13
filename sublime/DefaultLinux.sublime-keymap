@@ -1,0 +1,6 @@
+[
+  { "keys": ["ctrl+shift+k"], "command": "toggle_comment", "args": { "block": false } },
+  { "keys": ["ctrl+shift+o"], "command": "prompt_open_folder" },
+  { "keys": ["ctrl+,"], "command": "goto_definition" }
+]
+
