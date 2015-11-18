@@ -1,0 +1,28 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"AutoWrap",
+		"Better CoffeeScript",
+		"Compare Side-By-Side",
+		"CSS3",
+		"Git",
+		"GitGutter",
+		"HTMLBeautify",
+		"JavaScriptNext - ES6 Syntax",
+		"Markdown Preview",
+		"OmniMarkupPreviewer",
+		"Package Control",
+		"Pretty JSON",
+		"SideBarEnhancements",
+		"StandardFormat",
+		"Stylus",
+		"SublimeLinter-contrib-standard",
+		"Theme - Flatland",
+		"Tomorrow Color Schemes",
+		"VIM Navigation"
+	]
+}
