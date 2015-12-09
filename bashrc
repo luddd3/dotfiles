@@ -130,7 +130,7 @@ alias l='ls -CF'
 # }}}
 
 # {{{ Environment Variables
-export EDITOR=/usr/bin/gvim
+export EDITOR=/usr/bin/vim
 
 if [ -f ~/.gem/ruby/2.2.0/bin ]; then
 	export PATH=$PATH:~/.gem/ruby/2.2.0/bin
@@ -157,5 +157,4 @@ fi
 # Try to keep environment pollution down, EPA loves us.
 unset use_color safe_term match_lhs
 # }}}
-
 
