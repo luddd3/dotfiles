@@ -1,0 +1,8 @@
+[user]
+	name = Mathias Lundell
+[push]
+	default = simple
+[credential]
+	helper = cache --timeout=3600
+[alias]
+	lol = log --decorate --oneline --graph
