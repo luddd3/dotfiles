@@ -35,7 +35,7 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# {{{ History
+#{ History
 # don't put duplicate lines in the history. See bash(1) for more options
 # don't overwrite GNU Midnight Commander's setting of `ignorespace'.
 export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
@@ -46,9 +46,9 @@ export HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-# }}}
+#}
 
-# {{{ Colors
+#{ Colors
 case ${TERM} in
   xterm*|rxvt*|Eterm|aterm|kterm|gnome*)
     PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND; }'printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}"'
@@ -113,9 +113,9 @@ PS2='> '
 PS3='> '
 PS4='+ '
 
-# }}}
+#}
 
-# {{{ Aliases
+#{ Aliases
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
@@ -127,17 +127,17 @@ fi
 alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
-# }}}
+#}
 
-# {{{ Environment Variables
+#{ Environment Variables
 export EDITOR=/usr/bin/vim
 
 if [ -f ~/.gem/ruby/2.2.0/bin ]; then
 	export PATH=$PATH:~/.gem/ruby/2.2.0/bin
 fi
-# }}}
+#}
 
-# {{{ Git
+#{ Git
 if [[ $PS1 && -f /usr/share/git/git-prompt.sh ]]; then
     source /usr/share/git/git-prompt.sh
 
@@ -151,10 +151,16 @@ if [[ $PS1 && -f /usr/share/git/git-prompt.sh ]]; then
         PS1='\u \W $(__git_ps1 "(%s)")\$ '
     fi
 fi
-# }}
+#}
 
-# {{{ Cleanup
+#{ Cleanup
 # Try to keep environment pollution down, EPA loves us.
 unset use_color safe_term match_lhs
-# }}}
+#}
+
+#{ Autojump
+if [ -f /usr/share/autojump/autojump.bash ]; then
+  . /usr/share/autojump/autojump.bash
+fi
+#}
 
