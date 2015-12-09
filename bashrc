@@ -132,7 +132,7 @@ alias l='ls -CF'
 #{ Environment Variables
 export EDITOR=/usr/bin/vim
 
-if [ -f ~/.gem/ruby/2.2.0/bin ]; then
+if [ -d ~/.gem/ruby/2.2.0/bin ]; then
 	export PATH=$PATH:~/.gem/ruby/2.2.0/bin
 fi
 #}
