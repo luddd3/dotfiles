@@ -93,13 +93,42 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " Colors
 let g:solarized_termcolors=256
 colorscheme molokai
-set background=dark                " Tell vim that the background is dark
-hi Normal ctermbg=NONE             " Use same background as terminal
+set background=dark               " Tell vim that the background is dark
+hi Normal ctermbg=NONE            " Use same background as terminal
 
-" Git plugin
+"Niklas key mappings """""""""""
+let mapleader = "\<Space>"
+
+nnoremap <leader>ft Vatzf         " Shortcut to fold tags
+"nnoremap <C-h> <C-w>h             " Movement in normal mode 
+"nnoremap <C-j> <C-w>j
+"nnoremap <C-k> <C-w>k
+"nnoremap <C-l> <C-w>l
+
+" Enter normal mode (must not contain any additional whitespace after)
+inoremap jj <ESC> 
+
+" Copy and paste to system clipboard
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
+nmap <C-y><C-y> "+yy
+
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>e :e .<CR>
+
+nmap <Leader>t :!npm test<cr>
+nmap <Leader>r :!npm start<cr>
+"End Niklas key mappings """"""""""""
+
+" Git plugin """"""""""
 autocmd BufReadPost fugitive://* set bufhidden=delete
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
-
+"End Git plugin """"""""""
+"
 "Neocomplete """"""""""""
 " Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
 " Disable AutoComplPop.
@@ -165,3 +194,31 @@ endif
 
 "End Neocomplete"""""""""""
 
+
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" let g:syntastic_javascript_checkers = ['standard']
+" End Syntastic
+
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+autocmd bufwritepost .vimrc source $MYVIMRC
+
+let g:ctrlp_use_caching = 0
+if executable('ag')
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+else
+  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+  let g:ctrlp_prompt_mappings = {
+        \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
+        \ }
+endif
