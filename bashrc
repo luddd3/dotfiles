@@ -8,6 +8,8 @@ if [[ $- != *i* ]] ; then
 	return
 fi
 
+complete -cf sudo
+
 # Default prompt
 PS1='[\u@\h \W]\$ '
 
