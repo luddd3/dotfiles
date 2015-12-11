@@ -17,6 +17,12 @@ PS1='[\u@\h \W]\$ '
 # http://cnswww.cns.cwru.edu/~chet/bash/FAQ (E11)
 shopt -s checkwinsize
 
+# Fix minor spelling errors for directory in cd command
+shopt -s cdspell
+
+# Expand aliases, on by default for interactive shells
+shopt -s expand_aliases
+
 # Make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
