@@ -38,7 +38,7 @@ shopt -s histappend
 
 # Change the window title of X terminals
 case ${TERM} in
-  xterm*|rxvt*|Eterm|aterm|kterm|gnome*)
+  xterm*|rxvt*|Eterm|aterm|kterm|gnome*|interix|konsole*)
     PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND; }'printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}"'
     ;;
   screen)
@@ -97,33 +97,6 @@ PS2='> '
 PS3='> '
 PS4='+ '
 
-# Better yaourt colors
-export YAOURT_COLORS="nb=1:pkg=1:ver=1;32:lver=1;45:installed=1;42:grp=1;34:od=1;41;5:votes=1;44:dsc=0:other=1;35"
-
-# Bash completion
-[ -r /usr/share/bash-completion/bash_completion   ] && . /usr/share/bash-completion/bash_completion
-
-#{ Aliases
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-
-# some more ls aliases
-alias ll='ls -l'
-alias la='ls -A'
-alias l='ls -CF'
-#}
-
-#{ Environment Variables
-export EDITOR=/usr/bin/vim
-
-if [ -d ~/.gem/ruby/2.2.0/bin ]; then
-	export PATH=$PATH:~/.gem/ruby/2.2.0/bin
-fi
-
 # Git
 if [[ $PS1 && -f /usr/share/git/git-prompt.sh ]]; then
     source /usr/share/git/git-prompt.sh
@@ -141,6 +114,24 @@ fi
 
 # Cleanup
 unset use_color safe_term match_lhs
+
+# Better yaourt colors
+export YAOURT_COLORS="nb=1:pkg=1:ver=1;32:lver=1;45:installed=1;42:grp=1;34:od=1;41;5:votes=1;44:dsc=0:other=1;35"
+
+# Bash completion
+[ -r /usr/share/bash-completion/bash_completion   ] && . /usr/share/bash-completion/bash_completion
+
+# Aliases
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# Environment Variables
+export EDITOR=/usr/bin/vim
+
+if [ -d ~/.gem/ruby/2.2.0/bin ]; then
+  export PATH=$PATH:~/.gem/ruby/2.2.0/bin
+fi
 
 # Autojump
 if [ -f /usr/share/autojump/autojump.bash ]; then
