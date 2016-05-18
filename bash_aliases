@@ -27,4 +27,6 @@ alias cp='cp -i'
 alias la='ls -A'
 alias ll='ls -l'
 alias l='ls -CF'
+alias dc='docker-compose'
+alias docker-cleanup-volumes='docker volume ls -qf dangling=true | xargs -r docker volume rm'
 
