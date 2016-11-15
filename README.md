@@ -2,3 +2,11 @@
 
 My config files for various programs like Sublime, tmux, etc.
 
+## Applications
+
+### rofi
+Show window
+
+```bash
+$ rofi -show window -font "snap 10" -fg "#505050" -bg "#000000" -hlfg "#ffb964" -hlbg "#000000" -o 85
+```
