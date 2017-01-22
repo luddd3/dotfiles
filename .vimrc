@@ -25,6 +25,7 @@ NeoBundle 'tomasr/molokai'
 NeoBundle 'shougo/neocomplete'
 NeoBundle 'shougo/vimshell'
 NeoBundle 'ConradIrwin/vim-bracketed-paste'
+NeoBundle 'scrooloose/nerdcommenter'
 
 " Required:
 call neobundle#end()
