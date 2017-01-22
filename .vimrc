@@ -40,7 +40,7 @@ NeoBundleCheck
 syntax enable                     " Turn on syntax highlighting.
 
 set showcmd                       " Display incomplete commands.
-set showmode                      " Display the mode you're in.
+" set showmode                      " Display the mode you're in.
 
 set backspace=indent,eol,start    " Intuitive backspacing.
 
@@ -71,7 +71,6 @@ set nowritebackup                 " And again.
 set noswapfile                    " And again. 
 set directory=$HOME/.vim/tmp//,.  " Keep swap files in one location
 
-set smartindent
 set autoindent
 set foldenable                    "Enable code folding
 set mousehide                     "Hide mouse when typeing
@@ -95,7 +94,6 @@ colorscheme molokai
 set background=dark               " Tell vim that the background is dark
 hi Normal ctermbg=NONE            " Use same background as terminal
 
-"Niklas key mappings """""""""""
 let mapleader = "\<Space>"
 
 nnoremap <leader>ft Vatzf         " Shortcut to fold tags
@@ -119,13 +117,15 @@ nmap <C-y><C-y> "+yy
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>e :e .<CR>
 
+" Substitute words under cursor
+nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
+
 nmap <Leader>t :!npm test<cr>
 nmap <Leader>r :!npm start<cr>
-"End Niklas key mappings """"""""""""
 
 " Git plugin """"""""""
 autocmd BufReadPost fugitive://* set bufhidden=delete
-set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+" set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 "End Git plugin """"""""""
 "
 "Neocomplete """"""""""""
@@ -196,6 +196,7 @@ endif
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd bufwritepost .vimrc source $MYVIMRC
 
+" ctrlp
 let g:ctrlp_use_caching = 0
 if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
@@ -207,3 +208,9 @@ else
         \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
         \ }
 endif
+
+" powerline
+python3 from powerline.vim import setup as powerline_setup
+python3 powerline_setup()
+python3 del powerline_setup
+
