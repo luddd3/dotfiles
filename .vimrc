@@ -22,7 +22,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'tomasr/molokai'
-NeoBundle 'scrooloose/syntastic'
 NeoBundle 'shougo/neocomplete'
 NeoBundle 'shougo/vimshell'
 NeoBundle 'ConradIrwin/vim-bracketed-paste'
@@ -193,20 +192,6 @@ endif
 "let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
 "End Neocomplete"""""""""""
-
-
-" Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-let g:syntastic_javascript_checkers = ['standard']
-" End Syntastic
 
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd bufwritepost .vimrc source $MYVIMRC
