@@ -121,6 +121,14 @@ nnoremap <Leader>e :e .<CR>
 " Substitute words under cursor
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 
+" Move lines up/down
+nnoremap <C-j> :m .+1<CR>==
+nnoremap <C-k> :m .-2<CR>==
+inoremap <C-j> <ESC>:m .+1<CR>==
+inoremap <C-k> <ESC>:m .-2<CR>==
+vnoremap <C-j> :m '>.+1<CR>gv=gv
+vnoremap <C-k> :m '<.-2<CR>gv=gv
+
 nmap <Leader>t :!npm test<cr>
 nmap <Leader>r :!npm start<cr>
 
