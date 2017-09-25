@@ -1,5 +1,5 @@
-set t_Co=256
 set encoding=utf-8
+set t_Co=256
 
 "NeoBundle Scripts-----------------------------
 if has('vim_starting')
@@ -21,11 +21,14 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " Add or remove your Bundles here:
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'ctrlpvim/ctrlp.vim'
-NeoBundle 'tomasr/molokai'
 NeoBundle 'shougo/neocomplete'
 NeoBundle 'shougo/vimshell'
 NeoBundle 'ConradIrwin/vim-bracketed-paste'
 NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'christoomey/vim-tmux-navigator'
+NeoBundle 'chriskempson/base16-vim'
+NeoBundle 'sheerun/vim-polyglot'
 
 " Required:
 call neobundle#end()
@@ -89,12 +92,10 @@ set listchars=tab:\-\-
 autocmd FileType coffee setlocal shiftwidth=4 tabstop=4 softtabstop=4 noexpandtab
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
-" Colors
-let g:solarized_termcolors=256
-colorscheme molokai
-set background=dark               " Tell vim that the background is dark
-hi Normal ctermbg=NONE            " Use same background as terminal
+" Fix for green line numbers in base-16 color schemes
+let base16colorspace=256
 
+" Use space as leader key
 let mapleader = "\<Space>"
 
 nnoremap <leader>ft Vatzf         " Shortcut to fold tags
@@ -118,9 +119,6 @@ nmap <C-y><C-y> "+yy
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>e :e .<CR>
 
-" Substitute words under cursor
-nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
-
 " Move lines up/down
 nnoremap <C-j> :m .+1<CR>==
 nnoremap <C-k> :m .-2<CR>==
@@ -129,16 +127,20 @@ inoremap <C-k> <ESC>:m .-2<CR>==
 vnoremap <C-j> :m '>.+1<CR>gv=gv
 vnoremap <C-k> :m '<.-2<CR>gv=gv
 
+" Substitute words under cursor
+nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
+
 nmap <Leader>t :!npm test<cr>
 nmap <Leader>r :!npm start<cr>
 
 " Git plugin """"""""""
 autocmd BufReadPost fugitive://* set bufhidden=delete
-" set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 "End Git plugin """"""""""
+
 "
 "Neocomplete """"""""""""
 " Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
+
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
 " Use neocomplete.
@@ -154,7 +156,7 @@ let g:neocomplete#sources#dictionary#dictionaries = {
     \ 'default' : '',
     \ 'vimshell' : $HOME.'/.vimshell_hist',
     \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
+    \ }
 
 " Define keyword.
 if !exists('g:neocomplete#keyword_patterns')
@@ -167,23 +169,14 @@ inoremap <expr><C-g>     neocomplete#undo_completion()
 inoremap <expr><C-l>     neocomplete#complete_common_string()
 
 " Recommended key-mappings.
-" <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
   return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
-  " For no inserting <CR> key.
-  "return pumvisible() ? "\<C-y>" : "\<CR>"
 endfunction
-" <TAB>: completion.
+
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-" Close popup by <Space>.
-"inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
-
-" AutoComplPop like behavior.
-"let g:neocomplete#enable_auto_select = 1
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -196,9 +189,6 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 if !exists('g:neocomplete#sources#omni#input_patterns')
   let g:neocomplete#sources#omni#input_patterns = {}
 endif
-"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
 "End Neocomplete"""""""""""
 
@@ -218,8 +208,10 @@ else
         \ }
 endif
 
-" powerline
-python3 from powerline.vim import setup as powerline_setup
-python3 powerline_setup()
-python3 del powerline_setup
-
+" Use tmux navigator mappings
+let g:tmux_navigator_no_mappings = 1
+nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
+" nnoremap <silent> <C-\> :TmuxNavigatePrevious<cr>
