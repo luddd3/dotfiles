@@ -197,6 +197,10 @@ autocmd bufwritepost .vimrc source $MYVIMRC
 
 " ctrlp
 let g:ctrlp_use_caching = 0
+let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\v[\/]\.(git|hg|svn|node_modules)$',
+    \ 'file': '\v\.(exe|so|dll|zip|swp)$'
+    \ }
 if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
 
