@@ -1,0 +1,17 @@
+{
+	"extensions":
+	[
+		"js"
+	],
+	"tab_size": 2,
+	"translate_tabs_to_spaces": true,
+	"on_pre_save_language": [
+		{
+			"command": "js_prettier"
+		},
+		{
+			"command": "standard_format"
+		}
+	]
+}
+
