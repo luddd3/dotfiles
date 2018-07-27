@@ -1,0 +1,56 @@
+{
+    "editor.formatOnSave": true,
+    "window.zoomLevel": 1,
+    "vim.easymotion": false,
+    "vim.sneak": true,
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.hlsearch": true,
+    "vim.leader": "<space>",
+    "vim.handleKeys": {
+        // Select all
+        "<C-a>": false,
+        // Find
+        "<C-f>": false,
+        // Close tab
+        "<C-w>": false,
+        "<C-d>": false
+    },
+    "vim.insertModeKeyBindings": [
+        // Escape insert mode
+        {
+            "before": [
+                "j",
+                "j"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        },
+        {
+            "before": [
+                "k",
+                "k"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [],
+    "vim.normalModeKeyBindings": [],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        // Write file
+        {
+            "before": [
+                "<leader>",
+                "w"
+            ],
+            "commands": [
+                ":w"
+            ]
+        }
+    ],
+    "workbench.startupEditor": "newUntitledFile"
+}
