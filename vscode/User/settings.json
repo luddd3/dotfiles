@@ -1,11 +1,19 @@
 {
-    "editor.formatOnSave": true,
     "window.zoomLevel": 1,
+    "editor.formatOnSave": false,
+    "javascript.validate.enable": false,
+    "[javascript]": {
+        "editor.formatOnSave": true
+    },
+    "[typescript]": {
+        "editor.tabSize": 2,
+    },
+    "files.insertFinalNewline": true,
     "vim.easymotion": false,
     "vim.sneak": true,
     "vim.incsearch": true,
     "vim.useSystemClipboard": true,
-    "vim.useCtrlKeys": true,
+    "vim.useCtrlKeys": false,
     "vim.hlsearch": true,
     "vim.leader": "<space>",
     "vim.handleKeys": {
@@ -52,5 +60,13 @@
             ]
         }
     ],
-    "workbench.startupEditor": "newUntitledFile"
+    "workbench.startupEditor": "newUntitledFile",
+    "vim.disableExtension": false,
+    "extensions.ignoreRecommendations": false,
+    "files.associations": {
+        "Dockerfile-local": "dockerfile"
+    },
+    "workbench.colorTheme": "Monokai",
+    "breadcrumbs.enabled": true,
+    "javascript.updateImportsOnFileMove.enabled": "never"
 }
