@@ -30,3 +30,14 @@ alias l='ls -CF'
 alias dc='docker-compose'
 alias docker-cleanup-volumes='docker volume ls -qf dangling=true | xargs -r docker volume rm'
 alias prettierandstandard='prettier --write "{app,test,bin}/**/*.js" && standard --fix'
+
+_nvm_upgrade() {
+  if [[ $# -eq 0 ]]; then
+    echo "usage: nvm-upgrade <version>"
+    return
+  fi
+  CURRENT_NODE=`node -v`
+  echo "$CURRENT_NODE"
+  nvm install $1 --reinstall-packages-from=$CURRENT_NODE
+}
+alias nvm-upgrade=_nvm_upgrade
