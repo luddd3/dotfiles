@@ -13,3 +13,10 @@ $ rofi -show window -font "snap 10" -fg "#505050" -bg "#000000" -hlfg "#ffb964" 
 
 ### [ncdu (NCurses Disk Usage)](https://dev.yorhel.nl/ncdu)
 A smart cli program which can be used to find space hogs
+
+## Resources
+
+### Git
+
+#### How to work with private fork of public repo
+[https://stackoverflow.com/questions/10065526/github-how-to-make-a-fork-of-public-repository-private]()
