@@ -19,4 +19,4 @@ A smart cli program which can be used to find space hogs
 ### Git
 
 #### How to work with private fork of public repo
-[https://stackoverflow.com/questions/10065526/github-how-to-make-a-fork-of-public-repository-private]()
+[https://stackoverflow.com/questions/10065526/github-how-to-make-a-fork-of-public-repository-private](https://stackoverflow.com/questions/10065526/github-how-to-make-a-fork-of-public-repository-private)
