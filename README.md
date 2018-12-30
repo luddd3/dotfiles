@@ -20,3 +20,13 @@ A smart cli program which can be used to find space hogs
 
 #### How to work with private fork of public repo
 [https://stackoverflow.com/questions/10065526/github-how-to-make-a-fork-of-public-repository-private](https://stackoverflow.com/questions/10065526/github-how-to-make-a-fork-of-public-repository-private)
+
+## Random How-to
+
+### Linux
+
+#### Change backlight
+
+```bash
+$ xbacklight -inc 10
+$ xbacklight -dec 10
